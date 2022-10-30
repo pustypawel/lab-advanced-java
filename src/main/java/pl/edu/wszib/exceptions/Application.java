@@ -6,6 +6,7 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
+import java.util.Random;
 
 public class Application {
 
@@ -14,12 +15,12 @@ public class Application {
     }
 
     private void run() {
-//        try {
-//            exampleCheckedExceptionThrow();
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//        exampleUncheckedExceptionThrow();
+        try {
+            exampleCheckedExceptionThrow();
+            exampleUncheckedExceptionThrow();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         try {
             filesExample();
@@ -33,11 +34,15 @@ public class Application {
     }
 
     private void exampleCheckedExceptionThrow() throws Exception {
-        throw new Exception("Checked exception.");
+        if (new Random().nextBoolean()) {
+            throw new Exception("Checked exception.");
+        }
     }
 
     private void exampleUncheckedExceptionThrow() {
-        throw new RuntimeException("Unchecked exception.");
+        if (new Random().nextBoolean()) {
+            throw new RuntimeException("Unchecked exception.");
+        }
     }
 
     private void filesExample() {
