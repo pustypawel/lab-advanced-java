@@ -26,7 +26,9 @@ public class Application {
         // ISO 8601
 
         // OffsetDateTime
-//        localDateTime.atOffset(ZoneId.systemDefault())
+        localDateTime.atOffset(ZoneId.systemDefault().getRules().getOffset(localDateTime));
+        localDateTime.atZone(ZoneId.systemDefault()).toOffsetDateTime();
+
         OffsetDateTime offsetDateTime = OffsetDateTime.now(clock);
         System.out.println("OffsetDateTime: " + offsetDateTime);
 
